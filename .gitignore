@@ -1,32 +1,110 @@
-# Prerequisites
-*.d
+# incluir  < stdio.h >
+# incluir  < stdlib.h >
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+ estructura typedef
+{
+    int anioImp; // 2020 a 2022
+    int bimestre; // 1 a 6
+    char propiedad; // 'T' Terreno, 'D' Departamento, 'C' Casa, 'L' Local y 'Q' Quinta
+    importación flotante ;
+} sMontos ;
+ estructura typedef
+{
+    int nroContri; // 1 a 15200
+    char tipo; // 'T' Terreno, 'D' Departamento, 'C' Casa, 'L' Local y 'Q' Quinta
+    impaniod int ; // 2020 a 2022
+    bimes int ; // 1 a 6
+} sContribución ;
 
-# Precompiled Headers
-*.gch
-*.pch
+void  cargarArch ();
+int  buscarImp ( sMontos [][ 6 ], sContribu [ 91200 ] , int ); // Matriz de con 6 columnas por los bimestres y filas para el tipo, vector de nroContri*bimestres y entero de cantidad.
+int  validar ( int , int );
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+int  principal ()
+{
+    int anio,x= 0 ,primero= 1 ,maximoBim,pos;
+    int AntContri[ 91200 ];
+    float antBim,importeTotal;
+    ARCHIVO*fcontri;
+    sContribución contri[ 91200 ];
+    sMontos mon[x][ 6 ];
 
-# Fortran module files
-*.mod
-*.smod
+    printf ( " Ingrese anio a realizar: " );
+    año= validar ( 2020 , 2022 );
+    cargarArco ();
+    fcontri= fopen ( " CONTRIBUYENTES.dat " , " rb " );
+    si (fcontri== NULL )
+    {
+        printf ( " Error en CONTRIBUYENTES.dat " );
+        sistema ( " pausa " );
+        salida ( 2 );
+    }
+    fread (&contri[x], sizeof ( sContribu ), 1 ,fcontri);
+    printf ( " Contribuyentes Bimestres " );
+    mientras (! feof (fcontri))
+    {
+        antContri[x]=contri[ 91200 ]. nroContri ;
+        antBim=mon[x][ 6 ]. bimestre ;
+        while (antContri==contri[ 91200 ]. nroContri ||! feof (fcontri))
+        {
+            pos= buscarImp (mon,contri, 91200 );
+            importTotal+=mon[x][ 6 ]. importar ;
+            x++;
+            fread (&contri[x], sizeof ( sContribu ), 1 ,fcontri);
+        }
+        printf ( " %d                       %.2f  %.2f  %.2f  %.2f  %.2f  %.2f \n " ,contri[pos]. nroContri ,antBim); // Punto C
+    }
+    printf ( " Importe total: %.2f " ,importeTotal); // Punto A
+    if (antBim>maximoBim || primero== 0 )
+        {
+            maximoBim=antBim;
+            primero= 1 ;
+        }
+    más
+        primero= 0 ;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+    printf ( " El maximo bimestre es: %d " ,maximoBim);
 
-# Executables
-*.exe
-*.out
-*.app
+  devolver  0 ;
+}
+vacío  cargarArch ()
+{
+    intx ;
+    sMontos montos[x][ 6 ];
+    ARCHIVO*fmontos;
+    fmontos= fopen ( " montos.dat " , " rb " );
+    si (fmontos== NULL )
+    {
+        printf ( " Error en montos.dat " );
+        sistema ( " pausa " );
+        salida ( 1 );
+    }
+    fread (&montos[x][ 6 ], sizeof ( sMontos ), 1 ,fmontos);
+    mientras (! feof (fmontos))
+    {
+        x++;
+        fread (&montos[x][ 6 ], sizeof ( sMontos ), 1 ,fmontos);
+    }
+};
+int  buscarImp ( sMontos moni[][ 6 ], sContribuir contris[ 91200 ] , int cant)
+{
+    int pos=- 1 ,i= 0 ;
+    mientras (pos==- 1 &&i<cant)
+    {
+        if (moni[i][ 6 ]. propiedad ==contris[ 91200 ]. tipo )
+            pos=yo;
+        más
+            yo++;
+    }
+
+    volver pos;
+};
+int  validar ( int min, int max)
+{
+    dato int ;
+
+    hacer { scanf ( " %d " ,&dato);
+    } while (dato<min||dato>max);
+
+    dato de retorno ;
+};
